@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHub Room Booking System</title>
+    <link rel="stylesheet" href="/xhub.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-hotel"></i> XHub Room Booking System</h1>
+            <p>Quản lý đặt phòng khách học</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="rooms">
+                <i class="fas fa-bed"></i> Phòng
+            </button>
+            <button class="tab-btn" data-tab="customers">
+                <i class="fas fa-users"></i> Khách hàng
+            </button>
+            <button class="tab-btn" data-tab="bookings">
+                <i class="fas fa-calendar-check"></i> Đặt phòng
+            </button>
+            <button class="tab-btn" data-tab="room-types">
+                <i class="fas fa-tags"></i> Loại phòng
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Rooms Tab -->
+            <div class="tab-content active" id="rooms">
+                <div class="section-header">
+                    <h2>Quản lý Phòng</h2>
+                    <button class="btn btn-primary" onclick="openModal('room')">
+                        <i class="fas fa-plus"></i> Thêm phòng
+                    </button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="roomSearch" placeholder="Tìm kiếm phòng..." onkeyup="searchRooms()">
+                </div>
+
+                <div class="table-container">
+                    <table id="roomsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Số phòng</th>
+                                <th>Trạng thái</th>
+                                <th>Loại phòng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roomsTableBody">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Customers Tab -->
+            <div class="tab-content" id="customers">
+                <div class="section-header">
+                    <h2>Quản lý Khách hàng</h2>
+                    <button class="btn btn-primary" onclick="openModal('customer')">
+                        <i class="fas fa-plus"></i> Thêm khách hàng
+                    </button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="customerSearch" placeholder="Tìm kiếm khách hàng..." onkeyup="searchCustomers()">
+                </div>
+
+                <div class="table-container">
+                    <table id="customersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Họ tên</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>CMND</th>
+                                <th>Địa chỉ</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersTableBody">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bookings Tab -->
+            <div class="tab-content" id="bookings">
+                <div class="section-header">
+                    <h2>Quản lý Đặt phòng</h2>
+                    <button class="btn btn-primary" onclick="openModal('booking')">
+                        <i class="fas fa-plus"></i> Thêm đặt phòng
+                    </button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="bookingSearch" placeholder="Tìm kiếm đặt phòng..." onkeyup="searchBookings()">
+                </div>
+
+                <div class="table-container">
+                    <table id="bookingsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Khách hàng</th>
+                                <th>Phòng</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTableBody">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Room Types Tab -->
+            <div class="tab-content" id="room-types">
+                <div class="section-header">
+                    <h2>Quản lý Loại phòng</h2>
+                    <button class="btn btn-primary" onclick="openModal('roomType')">
+                        <i class="fas fa-plus"></i> Thêm loại phòng
+                    </button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="roomTypeSearch" placeholder="Tìm kiếm loại phòng..." onkeyup="searchRoomTypes()">
+                </div>
+
+                <div class="table-container">
+                    <table id="roomTypesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên loại</th>
+                                <th>Giá/giờ</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roomTypesTableBody">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Add/Edit -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Thêm mới</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="dataForm">
+                    <!-- Form fields will be dynamically generated -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Hủy</button>
+                <button class="btn btn-primary" onclick="saveData()">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Xác nhận xóa</h3>
+                <span class="close" onclick="closeDeleteModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa item này?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeDeleteModal()">Hủy</button>
+                <button class="btn btn-danger" onclick="confirmDelete()">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Đang tải...</p>
+    </div>
+
+    <script src="/xhub.js"></script>
+</body>
+</html> 
