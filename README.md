@@ -8,7 +8,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-**Giao diện quản lý đặt phòng khách sạn hiện đại và responsive**
+**Giao diện quản lý đặt phòng học hiện đại và responsive**
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ndyudev)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ndyudev)
@@ -19,7 +19,7 @@
 
 ## 📖 Giới thiệu
 
-**XHub Room Booking Frontend** là giao diện quản lý đặt phòng khách sạn được xây dựng bằng HTML, CSS và JavaScript thuần. Frontend này cung cấp giao diện trực quan và dễ sử dụng để quản lý toàn bộ hệ thống đặt phòng, tích hợp với Spring Boot Backend API.
+**XHub Room Booking Frontend** là giao diện quản lý đặt phòng học được xây dựng bằng HTML, CSS và JavaScript thuần. Frontend này cung cấp giao diện trực quan và dễ sử dụng để quản lý toàn bộ hệ thống đặt phòng, tích hợp với Spring Boot Backend API.
 
 ### 🎯 Tính năng chính
 - ✅ **Quản lý phòng**: Thêm, sửa, xóa, tìm kiếm phòng
